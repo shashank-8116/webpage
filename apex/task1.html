@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Enhanced Website</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?cs=srgb&dl=pexels-padrinan-255379.jpg&fm=jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-color: #f9f9f9; /* fallback color */
+  color: #333;
+  transition: background-color 0.4s, color 0.4s;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+    
+
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #0056b3;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 15px 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 5px 10px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      flex: 1;
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px 50px;
+      width: 100%;
+    }
+
+    section {
+      margin-bottom: 50px;
+    }
+
+    h2 {
+      color: #007BFF;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #007BFF;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    /* About */
+    #about p {
+      max-width: 650px;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+
+    /* Projects */
+    #projects ul {
+      list-style: none;
+      max-width: 650px;
+      margin: auto;
+      padding-left: 0;
+    }
+
+    #projects li {
+      padding: 8px 0;
+      font-size: 1.1rem;
+    }
+
+    #projects a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+
+    #projects a:hover {
+      text-decoration: underline;
+    }
+
+    /* Image Gallery */
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      max-width: 80px;
+      margin: auto;
+    }
+
+    #gallery img {
+
+  width: 250px;
+  height: auto; /* keep aspect ratio */
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+    
+    #gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Blog */
+    #blog article {
+      max-width: 700px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    #blog article h3 {
+      margin-bottom: 10px;
+      color: #0056b3;
+    }
+
+    #blog article p {
+      color: #555;
+      font-size: 1rem;
+    }
+
+    /* Contact */
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      margin-top: 15px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: vertical;
+    }
+
+    textarea {
+      height: 120px;
+    }
+
+    button.submit-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #007BFF;
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button.submit-btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* Toggle button */
+    .toggle-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 25px;
+      background-color: #007BFF;
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      background-color: #eee;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+
+    body.dark-mode header,
+    body.dark-mode nav {
+      background-color: #222;
+    }
+
+    body.dark-mode nav a {
+      color: #bbb;
+    }
+
+    body.dark-mode main {
+      background-color: #181818;
+    }
+
+    body.dark-mode #blog article,
+    body.dark-mode form {
+      background-color: #242424;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+      color: #ccc;
+    }
+
+    body.dark-mode input,
+    body.dark-mode textarea {
+      background-color: #333;
+      border: 1px solid #555;
+      color: #eee;
+    }
+
+    body.dark-mode footer {
+      background-color: #222;
+      color: #bbb;
+    }
+
+    body.dark-mode .toggle-btn,
+    body.dark-mode button.submit-btn {
+      background-color: #444;
+    }
+
+    body.dark-mode .toggle-btn:hover,
+    body.dark-mode button.submit-btn:hover {
+      background-color: #666;
+    }
+
+    /* Responsive for small devices */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to My Enhanced Website</h1>
+    <p>HTML, CSS, and JavaScript combined for a great experience</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hello! I’m learning web development and building this demo site with multiple features.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="https://www.online-calculator.com/full-screen-calculator/" target="_blank">📱 Calculator App</a></li>
+        <li><a href="https://example.com/project2" target="_blank">📋 To-Do List</a></li>
+        <li><a href="https://example.com/project3" target="_blank">🎨 Prompt Generator</a></li>
+      </ul>
+    </section>
+
+    <section id="gallery">
+      <h2>Image Gallery</h2>
+      <div>
+        <img src=" https://static.vecteezy.com/system/resources/previews/049/855/259/non_2x/nature-background-high-resolution-wallpaper-for-a-serene-and-stunning-view-photo.jpg"  alt="Nature Image" />
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUPIfiGgUML8G3ZqsNLHfaCnZK3I5g4tJabQ&s" alt="image"/>
+        <img src="https://www.shutterstock.com/image-photo/fried-salmon-steak-cooked-green-600nw-2489026949.jpg" alt="Food Image" />
+      </div>
+    </section>
+
+    <section id="blog">
+      <h2>Latest Blog Posts</h2>
+      <article>
+        <h3>Getting Started with Web Development</h3>
+        <p>Discover the basics of building websites and what tools you need to begin your journey.</p>
+      </article>
+      <article>
+        <h3>Tips for Writing Clean Code</h3>
+        <p>Learn some practical advice to keep your HTML, CSS, and JavaScript readable and maintainable.</p>
+      </article>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form id="contact-form" onsubmit="return submitForm(event)">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button class="submit-btn" type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode 🌙</button>
+  </main>
+
+  <footer>
+    &copy; 2025 My Enhanced Website. Made with  using HTML, CSS & JS.
+  </footer>a
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+
+      const name = event.target.name.value.trim();
+      const email = event.target.email.value.trim();
+      const message = event.target.message.value.trim();
+
+      if(name && email && message) {
+        alert(`Thanks for reaching out, ${name}! We'll get back to you soon.`);
+        event.target.reset();
+      } else {
+        alert('Please fill out all fields.');
+      }
+ 
+      return false; // prevent form default submission
+    }
+  </script>
+</body>
+</html>
